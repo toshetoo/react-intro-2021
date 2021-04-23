@@ -1,0 +1,53 @@
+{
+    "users": [
+        {
+          "id": "c7b73aa3-7b89-4496-a96d-0d0c4327840f",
+          "isAdmin": false,
+          "picture": "https://picsum.photos/200/300?random=1",
+          "name": "Schmidt Carpenter",
+          "email": "schmidtcarpenter@polarax.com",
+          "phone": "+1 (828) 541-3449"
+        },
+        {
+          "id": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
+          "isAdmin": true,
+          "picture": "https://picsum.photos/200/300",
+          "name": "Adeline Roberson",
+          "email": "adelineroberson@polarax.com",
+          "phone": "+1 (932) 545-3934"
+        },
+        {
+          "id": "72ac07b3-61cf-4cbd-9854-495250008346",
+          "isAdmin": false,
+          "picture": "https://picsum.photos/200/300",
+          "name": "Bush Poole",
+          "email": "bushpoole@polarax.com",
+          "phone": "+1 (950) 516-2083"
+        },
+        {
+          "id": "fcc51de4-47c2-42fe-9db4-7b0a5cf43d3f",
+          "isAdmin": false,
+          "picture": "https://picsum.photos/200/300",
+          "name": "Banks Best",
+          "email": "banksbest@polarax.com",
+          "phone": "+1 (909) 512-2518"
+        },
+        {
+          "id": "24eb3ebf-4f80-48b7-a76a-b99b283eaedc",
+          "isAdmin": true,
+          "picture": "https://picsum.photos/200/300",
+          "name": "Vinson Trujillo",
+          "email": "vinsontrujillo@polarax.com",
+          "phone": "+1 (843) 424-3478"
+        },
+        {
+          "id": "afddb4a0-5aa1-4e8a-b80f-34096270ca88",
+          "isAdmin": false,
+          "picture": "https://picsum.photos/200/300",
+          "name": "Lesley Reilly",
+          "email": "lesleyreilly@polarax.com",
+          "phone": "+1 (866) 549-3745"
+        }
+      ],
+    "tasks": []
+}

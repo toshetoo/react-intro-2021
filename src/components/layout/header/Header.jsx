@@ -1,8 +1,20 @@
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { logout } from '../../../core/services/AuthService';
 
 export function Header() {
+
+    const [redirect, setRedirect] = useState(false);
+
+    const onLogout = () => {
+        logout();
+        setRedirect(true);
+    }
+
     return (
+        <>
+        { redirect && <Redirect to="/login" /> }
         <header className="header">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="#">Navbar</a>
@@ -34,11 +46,13 @@ export function Header() {
                     </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                    <span className="logout-btn" onClick={onLogout}>Logout</span>
                 </div>
             </nav>
         </header>
+        </>
     );
 }

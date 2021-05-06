@@ -2,3 +2,8 @@
     background-color: azure;
     width: 100%;
 }
+
+.logout-btn {
+    cursor: pointer;
+    margin-left: 10px;
+}

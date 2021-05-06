@@ -7,7 +7,7 @@ export function User(props) {
 
     useEffect(() => {
         console.log(props);
-        getUserById(props.match.params.id).then(response => {
+        getUserById(props.computedMatch.params.id).then(response => {
             console.log(response);
             setUser(response.data);
         });

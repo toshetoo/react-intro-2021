@@ -30,6 +30,9 @@ export function Header() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/users-list">Users List</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/users/create">Create user</Link>
+                    </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown

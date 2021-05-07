@@ -14,7 +14,8 @@ export class Register extends Component {
             email: '',
             picture: '',
             password: '',
-            redirect: false
+            redirect: false,
+            error: ''
         };
     }
 
@@ -22,19 +23,19 @@ export class Register extends Component {
         event.persist();
 
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value.trim()
         });
     }
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        const { redirect, ...user } = this.state;
+        const { redirect, error, ...user } = this.state;
         register(user).then(_ => {
             this.setState({
                 redirect: true
             });
         })
-        .catch(err => console.error(err));
+        .catch(err => this.setState({error: err.message }));
     }
 
     render() {
@@ -43,21 +44,22 @@ export class Register extends Component {
             { this.state.redirect && <Redirect to="/login" /> }
             <div className="register-form-wrapper">
                 <form className="register-form" onSubmit={this.onFormSubmit}>
+                    { this.state.error && <span className="text-danger">{this.state.error}</span> }
                     <div className="form-group">
                         <label htmlFor="name">Name: </label>
-                        <input className="form-control" id="name" name="name" type="text" onChange={this.onInputChange}/>
+                        <input className="form-control" id="name" name="name" type="text" onChange={this.onInputChange} required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email: </label>
-                        <input className="form-control" id="email" name="email" type="email" onChange={this.onInputChange}/>
+                        <input className="form-control" id="email" name="email" type="email" onChange={this.onInputChange} required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password: </label>
-                        <input className="form-control" id="password" name="password" type="password" onChange={this.onInputChange}/>
+                        <input className="form-control" id="password" name="password" type="password" onChange={this.onInputChange} required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone">Phone: </label>
-                        <input className="form-control" id="phone" name="phone" type="text" onChange={this.onInputChange}/>
+                        <input className="form-control" id="phone" name="phone" type="text" onChange={this.onInputChange} required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="picture">Picture: </label>

@@ -22,10 +22,10 @@
       "id": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
       "isAdmin": true,
       "picture": "https://picsum.photos/200/300?random=2",
-      "name": "Adeline Roberson",
+      "name": "Adeline Roberson Pesho",
       "email": "adelineroberson@polarax.com",
       "phone": "+1 (932) 545-3934",
-      "password": 123456
+      "password": "12345678910"
     },
     {
       "id": "72ac07b3-61cf-4cbd-9854-495250008346",
@@ -64,13 +64,22 @@
       "password": 123456
     },
     {
-      "name": "admin2133",
-      "phone": "+3590000000321",
-      "email": "admin2@admin.com",
-      "picture": "https://picsum.photos/200/300?random=0.9750036055706519",
-      "password": "123456",
+      "picture": "https://picsum.photos/200/300?random=213",
+      "email": "admin@test222.com",
+      "name": "Admin test first user",
+      "phone": "+55555555555555555555555",
       "isAdmin": false,
-      "id": "N7U-uFJ"
+      "password": "12345678",
+      "id": "ejgyf7L"
+    },
+    {
+      "name": "fasdfdsa",
+      "phone": "afdsfda",
+      "email": "lesleyreifsdlly@polarax.com",
+      "picture": "afdsf",
+      "password": "afdsfasd",
+      "isAdmin": false,
+      "id": "T8L9fUu"
     }
   ],
   "tasks": []

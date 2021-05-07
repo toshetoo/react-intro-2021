@@ -1,4 +1,4 @@
-import { getAllUsers } from "../../../core/services/UsersService";
+import { deleteUser, getAllUsers } from "../../../core/services/UsersService";
 import { useEffect, useState } from 'react';
 import { UserCard } from "../user-card/UserCard";
 
@@ -20,9 +20,17 @@ export function UsersList() {
         });
     }, []);
 
+    const onDelete = (id) => {
+        deleteUser(id).then(() => {
+            setUsers((prevState) => {
+                return prevState.filter(u => u.id !== id);
+            })
+        });
+    }
+
     return (
         <div className="users-list-wrapper" style={wrapperStyles}>
-            { users.map(user => <UserCard key={user.id} user={user} />) }
+            { users.map(user => <UserCard key={user.id} user={user} onDelete={onDelete} />) }
         </div>
     );
 }

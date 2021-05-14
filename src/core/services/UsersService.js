@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { register } from './AuthService';
+import { deleteTask, getTasksByCreatorId } from './TasksService';
 
 const apiUrl = 'http://localhost:3000';
 
@@ -27,6 +28,15 @@ export function saveUser(userData) {
  * 
  * @param {id} id => the id of the user that should be deleted 
  */
-export function deleteUser(id) {
+export async function deleteUser(id) {
+    const userTasks = await getTasksByCreatorId(id);
+    
+    const deleteRequests = [];
+    userTasks.forEach(task => {
+        deleteRequests.push(deleteTask(task.id));
+    });
+
+    await Promise.all(deleteRequests);
+
     return axios.delete(`${apiUrl}/users/${id}`);
 }

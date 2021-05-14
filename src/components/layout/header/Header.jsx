@@ -1,7 +1,7 @@
 import './Header.css';
 import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { logout } from '../../../core/services/AuthService';
+import { getLoggedUser, logout } from '../../../core/services/AuthService';
 
 export function Header() {
 
@@ -12,6 +12,7 @@ export function Header() {
         setRedirect(true);
     }
 
+    const loggedUser = getLoggedUser();
     return (
         <>
         { redirect && <Redirect to="/login" /> }
@@ -30,8 +31,17 @@ export function Header() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/users-list">Users List</Link>
                     </li>
+                    {
+                        loggedUser && loggedUser.isAdmin &&
                     <li className="nav-item">
                         <Link className="nav-link" to="/users/create">Create user</Link>
+                    </li>
+                    }
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/tasks-list">All Tasks</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/tasks/create">Create task</Link>
                     </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

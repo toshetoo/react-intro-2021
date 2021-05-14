@@ -27,7 +27,7 @@ const userContent = (user, onDelete) => {
                             </div>
                         </Card.Text>
                         <Link to={`/users/${user.id}`}>View profile</Link> | 
-                        {loggedUser.isAdmin && <Link to={`/users/edit/${user.id}`}>Edit User</Link> } |
+                        {loggedUser.isAdmin && <span><Link to={`/users/edit/${user.id}`}>Edit User</Link> <span>|</span></span> } 
                         {loggedUser.isAdmin && <span className="delete-btn" onClick={() => onDelete(user.id)}>Delete User</span> }
                     </Card.Body>
                 </Card>

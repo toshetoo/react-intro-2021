@@ -13,12 +13,12 @@ export function getLoggedUser() {
 
 
 /**
- * @param userData => { username, password }
+ * @param userData => { email, password }
  */
 export async function login(userData) {
     const users = (await getAllUsers()).data;
 
-    const loggedUser = users.find(u => u.username === userData.username && u.password.toString() === userData.password);
+    const loggedUser = users.find(u => u.email === userData.email && u.password.toString() === userData.password);
 
     if (loggedUser) {
         localStorage.setItem('loggedUser', JSON.stringify(loggedUser));

@@ -4,8 +4,15 @@ import { deleteTask, getTasksByCreatorId } from './TasksService';
 
 const apiUrl = 'http://localhost:3000';
 
-export function getAllUsers() {
-    return axios.get(`${apiUrl}/users`);
+export async function getAllUsers(searchParam) {
+    const users = (await axios.get(`${apiUrl}/users`)).data;
+
+    if (!searchParam)
+        return users;
+
+    searchParam = searchParam.toLowerCase();
+
+    return users.filter(user => user.name.toLowerCase().includes(searchParam) || user.email.toLowerCase().includes(searchParam));
 }
 
 export function getUserById(id) {

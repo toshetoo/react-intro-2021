@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getLoggedUser } from './AuthService';
-import { getAllUsers } from './UsersService';
 
 const apiUrl = 'http://localhost:3000';
 
@@ -16,8 +15,16 @@ export const TaskStatus = {
  * 
  * @returns a collection of tasks
  */
-export function getAllTasks() {
-    return axios.get(`${apiUrl}/tasks`);
+export async function getAllTasks(searchParam) {
+    const allTasks = (await axios.get(`${apiUrl}/tasks`)).data;
+
+    if(!searchParam) 
+        return allTasks;
+
+    searchParam = searchParam.toLowerCase();
+
+    return allTasks.filter(task => task.title.toLowerCase().includes(searchParam) || task.description.toLowerCase().includes(searchParam));
+
 }
 
 /**
@@ -35,7 +42,7 @@ export function getTaskById(id) {
  * @returns a list of tasks
  */
 export async function getTasksByCreatorId(creatorId) {
-    const allTasks = (await getAllTasks()).data;
+    const allTasks = await getAllTasks();
 
     return allTasks.filter(task => task.creatorId === creatorId);
 }
@@ -44,20 +51,42 @@ export async function getTasksByCreatorId(creatorId) {
  * 
  * @param {taskData} taskData => new or existing task that should be saved
  */
-export function saveTask(taskData) {
-    if (taskData.id) {
-        taskData.lastUpdated = new Date();
-        return axios.put(`${apiUrl}/tasks/${taskData.id}`, taskData);
+export async function saveTask(updatedTask) {
+    if (updatedTask.id) {
+        const originalTask = (await getTaskById(updatedTask.id)).data;
+
+        const keys = Object.keys(originalTask);
+        const skippedFields = ['id', 'history', 'creatorId'];
+        for(let i=0; i < keys.length; i++) {
+            const currentProperty = keys[i];
+            if (skippedFields.includes(currentProperty))
+                continue;
+
+
+            if (originalTask[currentProperty] !== updatedTask[currentProperty]) {
+               
+                updatedTask.history.push({
+                    changedBy: getLoggedUser().name,
+                    changedProperty: currentProperty,
+                    oldValue: originalTask[currentProperty],
+                    newValue: updatedTask[currentProperty]
+                });
+            }
+        }
+
+        updatedTask.lastUpdated = new Date();
+        return axios.put(`${apiUrl}/tasks/${updatedTask.id}`, updatedTask);
     }
     
-    taskData = {
-        ...taskData,
+    updatedTask = {
+        ...updatedTask,
         creatorId: getLoggedUser().id,
         createdDate: new Date(),
-        lastUpdated: new Date()
+        lastUpdated: new Date(),
+        history: []
     };
 
-    return axios.post(`${apiUrl}/tasks`, taskData);
+    return axios.post(`${apiUrl}/tasks`, updatedTask);
 }
 
 /**

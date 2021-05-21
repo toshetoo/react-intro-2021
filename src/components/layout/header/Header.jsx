@@ -1,15 +1,33 @@
 import './Header.css';
 import { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { getLoggedUser, logout } from '../../../core/services/AuthService';
 
-export function Header() {
-
+const Header = withRouter((props) => {
     const [redirect, setRedirect] = useState(false);
+    const [searchParam, setSearchParam] = useState('');
 
     const onLogout = () => {
         logout();
         setRedirect(true);
+    }
+
+    const onSearchSubmit = (event) => {
+        event.preventDefault();
+
+        const pathName = props.location.pathname.split('/')[1];
+
+        const historyObject = { pathName: `/${pathName}`};
+        
+        if (searchParam) {
+            historyObject.search = `?q=${searchParam}`
+        }
+
+        props.history.push(historyObject);
+    }
+
+    const onSearchInputChange = (event) => {
+        setSearchParam(event.target.value);
     }
 
     const loggedUser = getLoggedUser();
@@ -58,8 +76,8 @@ export function Header() {
                         <a className="nav-link disabled" href="#">Disabled</a>
                     </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                    <form className="form-inline my-2 my-lg-0" onSubmit={onSearchSubmit}>
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={onSearchInputChange} />
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                     <span className="logout-btn" onClick={onLogout}>Logout</span>
@@ -68,4 +86,6 @@ export function Header() {
         </header>
         </>
     );
-}
+});
+
+export default Header;

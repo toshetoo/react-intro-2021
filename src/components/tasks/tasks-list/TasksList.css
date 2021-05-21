@@ -1,0 +1,16 @@
+.status {
+    border: 1px solid black;
+    padding:20px;
+}
+
+.list-wrapper {
+    display: flex;
+    height: calc(100vh - 60px);
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.column-header {
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}

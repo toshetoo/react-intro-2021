@@ -16,7 +16,7 @@ export function getLoggedUser() {
  * @param userData => { email, password }
  */
 export async function login(userData) {
-    const users = (await getAllUsers()).data;
+    const users = await getAllUsers();
 
     const loggedUser = users.find(u => u.email === userData.email && u.password.toString() === userData.password);
 
@@ -34,7 +34,7 @@ export async function login(userData) {
  * @param {userData} userData => holds all of the information for the user
  */
 export async function register(userData) {
-    const users = (await getAllUsers()).data;
+    const users = await getAllUsers();
 
     if (users.find(u => u.email === userData.email)) {
         throw new Error('Email already exists!');

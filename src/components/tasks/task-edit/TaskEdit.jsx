@@ -2,6 +2,15 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { getTaskById, saveTask } from './../../../core/services/TasksService';
 
+
+const formWrapperStyles = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 'calc(100vh - 60px)',
+}
+
+
 export function TaskEdit(props) {
     const [currentTask, setCurrentTask] = useState({ title: '', description: '', status: 'New' });
     const [redirect, setRedirect] = useState(false);
@@ -32,7 +41,7 @@ export function TaskEdit(props) {
     return (
         <>
         { redirect && <Redirect to="/tasks-list" /> }
-        <div className="task-form-wrapper">
+        <div className="task-form-wrapper" style={formWrapperStyles}>
             <form className="task-edit-form" onSubmit={onFormSubmit}>
                 <div className="form-group">
                     <label htmlFor="title">Title: </label>

@@ -1,6 +1,7 @@
 import { TaskCard } from "../task-card/TaskCard";
 import { useState, useEffect } from 'react';
 import { getTaskById } from './../../../core/services/TasksService';
+import { TaskHistory } from "../task-history/TaskHistory";
 
 export function Task(props) {
     const [currentTask, setCurrentTask] = useState(null);
@@ -12,6 +13,12 @@ export function Task(props) {
     }, [props.computedMatch.params.id]);
 
     return (
-        <TaskCard task={currentTask} />
+        <div className="task-info">
+            <TaskCard task={currentTask} />
+            <div className="history-info">
+                {currentTask && currentTask.history.map(historyObj => <TaskHistory key={historyObj.changedProperty} historyObj={historyObj} />)}
+            </div>
+        </div>
+        
     )
 }

@@ -73,5 +73,65 @@
       "id": "T8L9fUu"
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "title": "My first post 32423",
+      "description": "fdasfsdfsdafsd ",
+      "status": "In Progress",
+      "creatorId": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
+      "createdDate": "2021-05-21T06:11:44.570Z",
+      "lastUpdated": "2021-05-21T07:53:13.512Z",
+      "id": 1,
+      "history": [
+        {
+          "changedBy": "Adeline Roberson Pesho",
+          "changedProperty": "description",
+          "oldValue": "fdasfsdfsda",
+          "newValue": "fdasfsdfsdafsd "
+        },
+        {
+          "changedBy": "Adeline Roberson Pesho",
+          "changedProperty": "status",
+          "oldValue": "New",
+          "newValue": "In Progress"
+        },
+        {
+          "changedBy": "Adeline Roberson Pesho",
+          "changedProperty": "title",
+          "oldValue": "My first post",
+          "newValue": "My first post 32423"
+        }
+      ]
+    },
+    {
+      "title": "fdasfsd",
+      "description": "sgdfgfsdgd",
+      "status": "In Progress",
+      "creatorId": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
+      "createdDate": "2021-05-21T06:11:51.870Z",
+      "lastUpdated": "2021-05-21T06:11:51.870Z",
+      "id": 2,
+      "history": []
+    },
+    {
+      "title": "fasdfasd",
+      "description": "dsafasdf",
+      "status": "In Review",
+      "creatorId": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
+      "createdDate": "2021-05-21T06:11:56.658Z",
+      "lastUpdated": "2021-05-21T06:11:56.658Z",
+      "id": 3,
+      "history": []
+    },
+    {
+      "title": "fdsafasd",
+      "description": "adsfads",
+      "status": "New",
+      "creatorId": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
+      "createdDate": "2021-05-21T06:12:01.851Z",
+      "lastUpdated": "2021-05-21T06:49:14.058Z",
+      "id": 4,
+      "history": []
+    }
+  ]
 }

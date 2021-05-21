@@ -10,15 +10,16 @@ const wrapperStyles = {
 };
 
 
-export function UsersList() {
+export function UsersList(props) {
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        getAllUsers().then(response => {
-            setUsers(response.data);
+        const searchParam = props.location.search.split('=')[1];
+        getAllUsers(searchParam).then(users => {
+            setUsers(users);
         });
-    }, []);
+    }, [props.location.search]);
 
     const onDelete = (id) => {
         deleteUser(id).then(() => {

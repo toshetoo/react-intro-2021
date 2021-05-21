@@ -29,8 +29,12 @@ export function TaskCard({ task, onDelete }) {
             break;
     }
 
+    const onDragStart = (event) => {
+        event.dataTransfer.setData('taskId', task.id);
+    }
+
     return (
-        <div className="task-card-wrapper">
+        <div className="task-card-wrapper" draggable={true} onDragStart={onDragStart}>
             <Card style={{ width: '18rem' }} className={taskStatusColor}>
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>

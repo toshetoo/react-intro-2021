@@ -1,8 +1,9 @@
-import { deleteUser, getAllUsers } from "../../../core/services/UsersService";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { UserCard } from "../user-card/UserCard";
+import { useDispatch, useSelector } from "react-redux";
 
 // import './UsersList.css';
+import { deleteUserFromAPI, getAllUsersFromAPI } from './../../../core/actions/user-actions';
 
 const wrapperStyles = {
     display: 'flex',
@@ -12,21 +13,16 @@ const wrapperStyles = {
 
 export function UsersList(props) {
 
-    const [users, setUsers] = useState([]);
+    const dispatch = useDispatch();
+    const users = useSelector(state => state.users);
 
     useEffect(() => {
         const searchParam = props.location.search.split('=')[1];
-        getAllUsers(searchParam).then(users => {
-            setUsers(users);
-        });
-    }, [props.location.search]);
+        dispatch(getAllUsersFromAPI(searchParam));
+    }, [props.location.search, dispatch]);
 
     const onDelete = (id) => {
-        deleteUser(id).then(() => {
-            setUsers((prevState) => {
-                return prevState.filter(u => u.id !== id);
-            })
-        });
+       dispatch(deleteUserFromAPI(id));
     }
 
     return (

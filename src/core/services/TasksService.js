@@ -74,15 +74,15 @@ export async function saveTask(updatedTask) {
             }
         }
 
-        updatedTask.lastUpdated = new Date();
+        updatedTask.lastUpdated = new Date().toDateString();
         return axios.put(`${apiUrl}/tasks/${updatedTask.id}`, updatedTask);
     }
     
     updatedTask = {
         ...updatedTask,
         creatorId: getLoggedUser().id,
-        createdDate: new Date(),
-        lastUpdated: new Date(),
+        createdDate: new Date().toDateString(),
+        lastUpdated: new Date().toDateString(),
         history: []
     };
 

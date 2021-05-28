@@ -33,10 +33,10 @@ export function TasksList(props) {
         setTasks(tasks);
 
         // TODO check why rendering is broken
-        // saveTask(task).then(_ => {
-        //     console.log('SUCCESS');
-        //     setTasks(tasks);
-        // });            
+        saveTask(task).then(_ => {
+            console.log('SUCCESS');
+            setTasks(tasks);
+        });            
     }
 
     return (

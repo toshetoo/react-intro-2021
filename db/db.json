@@ -16,24 +16,15 @@
       "name": "Adeline Roberson Pesho",
       "email": "adelineroberson@polarax.com",
       "phone": "+1 (932) 545-3934",
-      "password": "12345678910"
+      "password": "1fh"
     },
     {
       "id": "72ac07b3-61cf-4cbd-9854-495250008346",
-      "isAdmin": false,
+      "isAdmin": true,
       "picture": "https://picsum.photos/200/300?random=3",
-      "name": "Bush Poole",
+      "name": "Bush Poolegfdg",
       "email": "bushpoole@polarax.com",
       "phone": "+1 (950) 516-2083",
-      "password": 123456
-    },
-    {
-      "id": "fcc51de4-47c2-42fe-9db4-7b0a5cf43d3f",
-      "isAdmin": false,
-      "picture": "https://picsum.photos/200/300?random=4",
-      "name": "Banks Best",
-      "email": "banksbest@polarax.com",
-      "phone": "+1 (909) 512-2518",
       "password": 123456
     },
     {
@@ -62,25 +53,16 @@
       "isAdmin": false,
       "password": "12345678",
       "id": "ejgyf7L"
-    },
-    {
-      "name": "fasdfdsa",
-      "phone": "afdsfda",
-      "email": "lesleyreifsdlly@polarax.com",
-      "picture": "afdsf",
-      "password": "afdsfasd",
-      "isAdmin": false,
-      "id": "T8L9fUu"
     }
   ],
   "tasks": [
     {
       "title": "My first post 32423",
       "description": "fdasfsdfsdafsd ",
-      "status": "In Progress",
+      "status": "In Review",
       "creatorId": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
       "createdDate": "2021-05-21T06:11:44.570Z",
-      "lastUpdated": "2021-05-21T07:53:13.512Z",
+      "lastUpdated": "Fri May 28 2021",
       "id": 1,
       "history": [
         {
@@ -100,6 +82,12 @@
           "changedProperty": "title",
           "oldValue": "My first post",
           "newValue": "My first post 32423"
+        },
+        {
+          "changedBy": "Adeline Roberson Pesho",
+          "changedProperty": "status",
+          "oldValue": "In Progress",
+          "newValue": "In Review"
         }
       ]
     },
@@ -116,12 +104,25 @@
     {
       "title": "fasdfasd",
       "description": "dsafasdf",
-      "status": "In Review",
+      "status": "Done",
       "creatorId": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
       "createdDate": "2021-05-21T06:11:56.658Z",
-      "lastUpdated": "2021-05-21T06:11:56.658Z",
+      "lastUpdated": "Fri May 28 2021",
       "id": 3,
-      "history": []
+      "history": [
+        {
+          "changedBy": "Adeline Roberson Pesho",
+          "changedProperty": "status",
+          "oldValue": "In Review",
+          "newValue": "In Progress"
+        },
+        {
+          "changedBy": "Adeline Roberson Pesho",
+          "changedProperty": "status",
+          "oldValue": "In Progress",
+          "newValue": "Done"
+        }
+      ]
     },
     {
       "title": "fdsafasd",

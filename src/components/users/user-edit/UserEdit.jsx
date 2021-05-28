@@ -1,44 +1,35 @@
 import './UserEdit.css';
 import { useState, useEffect } from 'react';
-import { getUserById } from '../../../core/services/UsersService';
-import { saveUser } from './../../../core/services/UsersService';
 import { Redirect } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearSelectedUser, editUser, getUserByIdFromAPI, saveUserInAPI } from '../../../core/actions/user-actions';
 
 
 export function UserEdit(props) {
+    const dispatch = useDispatch();
+    const editedUser = useSelector(state => state.user);
 
-    const [editedUser, setEditedUser] = useState({
-        picture: '',
-        email: '',
-        name: '',
-        phone: '',
-        isAdmin: false,
-        password: ''
-    });
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
     useEffect(() => {
+        dispatch(clearSelectedUser());
         if (props.computedMatch.params.id) {
-            getUserById(props.computedMatch.params.id).then((response) => {
-                setEditedUser(response.data);
-            })
+            dispatch(getUserByIdFromAPI(props.computedMatch.params.id))
         }       
-    }, [props.computedMatch.params.id])
+    }, [props.computedMatch.params.id, dispatch])
 
     const onInputChange = (event) => {
-        setEditedUser((prevState) => ({
-            ...prevState,
-            [event.target.name]: event.target.value.trim()
-        }));
+        dispatch(editUser({ [event.target.name]: event.target.value.trim() }))
+    }
+
+    const onCheckboxChange = (event) => {
+        dispatch(editUser({ [event.target.name]: event.target.checked }) )
     }
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-
-        saveUser(editedUser).then(_ => {
-            console.log('SUCCESS');
-            setShouldRedirect(true);
-        });
+        dispatch(saveUserInAPI(editedUser));
+        setShouldRedirect(true);
     }
 
     return (
@@ -68,7 +59,7 @@ export function UserEdit(props) {
                 </div>
                 <div className="form-group">
                     <label htmlFor="isAdmin">Administrator: </label>
-                    <input type="checkbox" id="isAdmin" name="isAdmin" className="form-control" checked={editedUser.isAdmin} onChange={onInputChange}/>
+                    <input type="checkbox" id="isAdmin" name="isAdmin" className="form-control" checked={editedUser.isAdmin} onChange={onCheckboxChange}/>
                 </div>
                 <button className="btn btn-primary">Save</button>
             </form>

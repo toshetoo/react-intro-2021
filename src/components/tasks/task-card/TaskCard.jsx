@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { TaskStatus } from './../../../core/services/TasksService';
+import './TaskCard.css';
 
 export function TaskCard({ task, onDelete }) {
 
@@ -39,18 +40,18 @@ export function TaskCard({ task, onDelete }) {
                 <Card.Body>
                     <Card.Title>{task.title}</Card.Title>
                     <Card.Text>
-                        <div>
+                        <span className="card-data-row">
                             <strong>Description: </strong><span>{task.description}</span>
-                        </div>
-                        <div>
+                        </span>
+                        <span className="card-data-row">
                             <strong>Created on: </strong><span>{task.createdDate}</span>
-                        </div>
-                        <div>
+                        </span>
+                        <span className="card-data-row">
                             <strong>Last updated: </strong><span>{task.lastUpdated}</span>
-                        </div>
-                        <div>
+                        </span>
+                        <span className="card-data-row">
                             <strong>Status: </strong><span>{task.status}</span>
-                        </div>
+                        </span>
                     </Card.Text>
                     <Link to={`/tasks/${task.id}`}>View task details</Link> |
                     <Link to={`/tasks/edit/${task.id}`}>Edit task</Link> |
